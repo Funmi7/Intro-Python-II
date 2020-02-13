@@ -57,7 +57,7 @@ player = Player(input('Enter name: '), room['outside'])
 direction = ""
 while direction != 'q':
     direction = input(
-        f"\nHello {player.name}.\nYou are currently in {player.room}. \nPlease Enter n,s,e,w to continue")
+        f"\nHello {player.name}.\nYou are currently in {player.room}. \nPlease Enter n,s,e,w to continue: ")
     try:
         if direction == "n":
             if player.room.n_to == None:
@@ -65,10 +65,19 @@ while direction != 'q':
             else:
                 player.room = player.room.n_to
         elif direction == 's':
-            player.room = player.room.s_to
+            if player.room.s_to == None:
+                print("Try again")
+            else:
+                player.room = player.room.s_to
         elif direction == 'e':
-            player.room = player.room.e_to
+            if player.room.e_to == None:
+                print("Try again")
+            else:
+                player.room = player.room.e_to
         elif direction == 'w':
-            player.room = player.room.e_to
+            if player.room.w_to == None:
+                print("Try again")
+            else:
+                player.room = player.room.w_to
     except ValueError:
         print('Please your choice is invalid')
